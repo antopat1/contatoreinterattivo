@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Pixelify+Sans&family=Poppins:wght@100&family=Roboto&family=Rubik+Doodle+Shadow&display=swap');
+
+* {
+  font-family: "Nabla", sans-serif;
+  padding: 0;
+  margin: 0;
+
+}
+
+body {
+  color: #ccf986;
+  background: #3634149b;
+  background: linear-gradient(to bottom, #14361b78, #2b1e21);
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+button {
+  font-size: 1rem;
+  background: #1f5700;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+  height: 50px;
+  border-radius: 50px;
+}
+
+button:hover {
+  filter: hue-rotate(25deg);
+}
+
+button:disabled {
+  pointer-events: none;
+  filter: saturate(10%);
+}
+
+input {
+  outline: none;
+  border: none;
+  text-align: center;
+  width: 70px;
+  height: 28px;
+  border-radius: 14px;
+  font-weight: 500;
+  color: #0004ff;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.myApp-container {
+  max-width: 420px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+
+}
+
+.myApp-counterSetting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+
+.counter {
+  font-size: 10em;
+  text-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+  width: 430px;
+  margin-left: 265px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 80%;
+  margin-right: 400px;
+}
+
+.buttons button:nth-child(-n + 2) {
+  width: calc(40% - 10px);
+}
+
+.buttons button:last-child {
+  width: 80%;
+}
+
+.settings {
+  width: 100%;
+  margin-left: 200px;
+}
+
+.settings p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .myApp-counterSetting {
+    flex-direction: column;
+  }
+
+  .settings {
+    margin-left: 0px;
+    position: absolute;
+    margin-top: 500px;
+    margin-left: 450px;
+  }
+
+  .settings p {
+    margin-right: 600px;
+  }
+
+  .buttons {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 430px) {
+  .settings {
+    margin-left: 100px;
+  }
+}
