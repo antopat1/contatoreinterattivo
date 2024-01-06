@@ -22,4 +22,6 @@ This project is a web application that allows users to interact with a counter. 
 
 3. **Counter Actions:**
    - Use the buttons to increment, decrement, or reset the counter.
-
+  
+   ## URL
+- https://quiet-belekoy-9b1f71.netlify.app/
