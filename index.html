@@ -7,15 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contatore Interattivo</title>
     <link href="assets/css/custoumRules.css" rel="stylesheet">
-
+    
+    <!-- riferimento cdn per i font associato a simboli speciali -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
 <body>
 
     <div class="myApp-container">
+
         <h1>Contatore Interattivo</h1>
-        <div class="myApp-counterSetting">
-            <section class="counter">0</section>
+
+        <button id="showAppBtn"> &nbsp; CREA ELEMENTI IN JS ED AVVIA APPLICAZIONE &nbsp;</button>
+        <div class="myApp-counterSetting" style="display: none;">
+            <!-- il contatore verrà creato qui -->
             <section class="settings">
                 <u>
                     <h2 style="font-family: 'Courier New'">Impostazioni</h2>
@@ -36,16 +41,11 @@
                         style="font-family: Arial, Helvetica, sans-serif; color: #db0505;" />
                 </p>
             </section>
-
-
         </div>
 
-        <section class="buttons">
-            <button id="decrement">Decrementa</button>
-            <button id="increment">Incrementa</button>
-            <button id="reset">Azzera</button>
+        <section class="buttons" id="buttonContainer" style="display: none;">
+            <!-- I pulsanti saranno aggiunti dinamicamente qui -->
         </section>
-
 
     </div>
 

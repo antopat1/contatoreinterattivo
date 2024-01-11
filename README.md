@@ -1,27 +1,30 @@
 # Interactive Counter
 
-## Description
+This is a simple web application that allows you to increase and decrease a counter based on the provided settings.
 
-This project is a web application that allows users to interact with a counter. Users can adjust the counter value through the initial input and observe real-time changes in the user interface.
+## Key Features
+- **Interactive Counter:** Increment or decrement the counter according to your preferences.
+- **Custom Settings:** Set an initial value and a maximum value for the counter.
+- **Event Delegation:** Event handling is implemented through Event Delegation for cleaner and more efficient code.
 
-## Features
+## Technologies Used
+- HTML
+- CSS 
+- JavaScript (Event Delegation, DOM manipulation , Dynamic creation of HTML Elements)
 
-- **Initial Input:** Users can enter a new initial value for the counter.
-- **Maximum Value:** Users can set a maximum value for the counter.
-- **Increment and Decrement:** Dedicated buttons allow users to increment, decrement, or reset the counter.
-- **Numeric Validation:** The application alerts the user through an alert if a non-numeric value is entered in the input.
+## How to Use
+1. Provide desired initial and maximum values.
+2. Click the "Create JS elements and start the application" button to begin.
+3. Interact with the buttons to increase, decrease, or reset the counter.
 
-## Usage
+## Project Structure
+- **index.html:** Contains the HTML structure of the page.
+- **style.css:** Manages the styling of the page.
+- **script.js:** Contains the JavaScript logic for the application.
 
-1. **Initial Input:**
-   - Enter a new value in the initial input.
-   - Press "Enter" or move the cursor out of the input to apply the new value.
+## Deployment
+The project is deployed and accessible at [https://quiet-belekoy-9b1f71.netlify.app/](https://quiet-belekoy-9b1f71.netlify.app/).
 
-2. **Maximum Value:**
-   - Enter a maximum value in the corresponding input.
-
-3. **Counter Actions:**
-   - Use the buttons to increment, decrement, or reset the counter.
-  
-   ## URL
-- https://quiet-belekoy-9b1f71.netlify.app/
+## Acknowledgments
+- Fonts provided by Google Fonts: "Nabla", "Pixelify Sans", "Poppins", "Roboto", "Rubik Doodle Shadow".
+- Icons provided by Font Awesome through CDN.

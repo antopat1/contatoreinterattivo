@@ -1,132 +1,162 @@
+/* import di "Nabla" tra i font maggiormente in trend */
 @import url('https://fonts.googleapis.com/css2?family=Nabla&family=Pixelify+Sans&family=Poppins:wght@100&family=Roboto&family=Rubik+Doodle+Shadow&display=swap');
 
+/* Reset del margin e padding di default e utilizzo del font "Nabla" come predefinito per l'intero documento */
 * {
-  font-family: "Nabla", sans-serif;
-  padding: 0;
-  margin: 0;
-
+    font-family: "Nabla", sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
+/* Stili per il corpo della pagina */
 body {
-  color: #ccf986;
-  background: #3634149b;
-  background: linear-gradient(to bottom, #14361b78, #2b1e21);
-  background-attachment: fixed;
-  height: 100vh;
+    color: #ccf986;
+    background: #3634149b;
+    background: linear-gradient(to bottom, #14361b78, #2b1e21);
+    background-attachment: fixed; /* Sfondo fisso durante lo scrolling */
+    height: 100vh; /* Occupa l'intera altezza della viewport */
 }
 
 button {
-  font-size: 1rem;
-  background: #1f5700;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
-  height: 50px;
-  border-radius: 50px;
+    font-size: 1rem;
+    background: #1f5700;
+    color: #ffffff;
+    border: none;
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25); /* Ombra leggera */
+    height: 50px;
+    border-radius: 50px; /* Bordo arrotondato */
 }
 
 button:hover {
-  filter: hue-rotate(25deg);
+    filter: hue-rotate(25deg); /* Cambia il colore al passaggio del mouse */
 }
 
 button:disabled {
-  pointer-events: none;
-  filter: saturate(10%);
+    pointer-events: none; /* Impedisce l'interazione con i pulsanti disabilitati */
+    filter: saturate(10%); /* Riduce la saturazione del colore */
 }
 
 input {
-  outline: none;
-  border: none;
-  text-align: center;
-  width: 70px;
-  height: 28px;
-  border-radius: 14px;
-  font-weight: 500;
-  color: #0004ff;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    outline: none;
+    border: none;
+    text-align: center;
+    width: 70px;
+    height: 28px;
+    border-radius: 14px;
+    font-weight: 500;
+    color: #0004ff;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 .myApp-container {
-  max-width: 420px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4rem;
-
+    max-width: 420px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem; /* Spaziatura tra gli elementi figli */
 }
 
 .myApp-counterSetting {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-
+/* Stili per il contatore numerico */   
 .counter {
-  font-size: 10em;
-  text-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
-  width: 430px;
-  margin-left: 265px;
+    font-size: 10em;
+    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    width: 430px;
+    margin-left: 265px;
 }
 
+/* Stili per il contenitore dei pulsanti */
 .buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  width: 80%;
-  margin-right: 400px;
+    display: flex;
+    flex-wrap: wrap; /* Rientra a capo se non c'è abbastanza spazio */
+    gap: 10px;
+    width: 80%;
+    margin-right: 400px;
 }
 
+/* Regola per i primi due pulsanti nel contenitore */
 .buttons button:nth-child(-n + 2) {
-  width: calc(40% - 10px);
+    width: calc(40% - 10px);
 }
 
+/* Regola per l'ultimo pulsante nel contenitore */
 .buttons button:last-child {
-  width: 80%;
+    width: 80%;
 }
 
+/* Stili per il contenitore delle impostazioni */
 .settings {
-  width: 100%;
-  margin-left: 200px;
+    width: 100%;
+    margin-left: 200px;
 }
 
+/* Stili per i paragrafi all'interno delle impostazioni */
 .settings p {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
+/*Regole per le dimensioni e il posizionamento in risposta a schermi più piccoli */
 @media (max-width: 768px) {
-  .myApp-counterSetting {
-    flex-direction: column;
-  }
+    .myApp-counterSetting {
+        flex-direction: column;
+    }
 
-  .settings {
-    margin-left: 0px;
-    position: absolute;
-    margin-top: 500px;
-    margin-left: 450px;
-  }
+    .settings {
+        margin-left: 0px;
+        position: absolute;
+        margin-top: 500px;
+        margin-left: 450px;
+    }
 
-  .settings p {
-    margin-right: 600px;
-  }
+    .settings p {
+        margin-right: 600px;
+    }
 
-  .buttons {
-    margin-right: 0px;
-  }
+    .buttons {
+        margin-right: 0px;
+    }
 }
 
+/* Regole per le dimensioni e il posizionamento in schermi molto piccoli come IPhone 12*/
 @media (max-width: 430px) {
-  .settings {
-    margin-left: 100px;
-  }
+    .settings {
+        margin-left: 180px;
+        padding-bottom: 100px;
+    }
+
+    .counter {
+        margin-left: 350px;
+    }
+
+    .buttons {
+        margin-left: 70px;
+        width: 100%;
+    }
+
+    .myApp-container {
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 6.5vw;
+        margin-bottom: 2rem;
+    }
+
+    #showAppBtn {
+        font-size: 3vw;
+    }
 }

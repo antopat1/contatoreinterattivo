@@ -1,107 +1,122 @@
-
-const counterDiv = document.querySelector(".counter");
-const incrementBtn = document.getElementById("increment");
-const decrementBtn = document.getElementById("decrement");
-const resetBtn = document.getElementById("reset");
-const startCountInput = document.getElementById("startCount");
-const maxCountInput = document.getElementById("maxCount");
-
-//----------------------//
-let counterValue = 0;
-let maxValue = null; // inizialmente non ci sono restrizioni per i valori del contatore
-
 document.addEventListener("DOMContentLoaded", () => {
-    updateCounterDisplay();
-    updateButtonState();
-});
+    let counterValue = 0;
+    let maxValue = null; // inizialmente non ci sono restrizioni per i valori del contatore
 
-incrementBtn.addEventListener("click", () => {
-    if (maxValue === null || counterValue < maxValue) {
-        counterValue++;
+    // Referenze ai vari elementi HTML
+    const startCountInput = document.getElementById("startCount");
+    const maxCountInput = document.getElementById("maxCount");
+    const showAppBtn = document.getElementById("showAppBtn");
+    const myAppContainer = document.querySelector(".myApp-counterSetting");
+    const buttonContainer = document.getElementById("buttonContainer");
 
-        updateCounterDisplay();
-        updateButtonState();
-    }
-});
+    // Creazione dinamica JS del contatore 
+    const sectionContainer = document.createElement("section");
+    sectionContainer.textContent = "0";
+    sectionContainer.classList.add("counter");
+    myAppContainer.insertBefore(sectionContainer, myAppContainer.firstChild);
 
-decrementBtn.addEventListener("click", () => {
-    if (counterValue > 0) {
-        counterValue--;
+    // Creazione dinamica dei pulsanti ciclando un array contenente le classi associate ai simboli del CDN CSS "font-awesome"
+    const buttonSymbols = ['fa-minus', 'fa-plus', 'fa-trash-can'];
+    buttonSymbols.forEach((symbolClass, index) => {
+        const button = document.createElement("button");
+        button.classList.add("fa-solid", symbolClass);
+        button.id = `button${index + 1}`;
 
-        updateCounterDisplay();
-        updateButtonState();
-    }
-});
+        // Se la classe è 'fa-trash-can' (icona del cestino), aggiungi oltre al simbolo anche il testo a "RESET"
+        if (symbolClass === 'fa-trash-can') {
+            button.textContent = " RESET";
+        }
+        buttonContainer.appendChild(button);
+    });
 
-resetBtn.addEventListener("click", () => {
-    counterValue = 0;
-    maxValue = null;
-    startCountInput.value = 0;
-    maxCountInput.value = 0;
+    // Gestore dell'evento iniziale che al click mostra il contatore interattivo e le sue impostazioni 
+    showAppBtn.addEventListener("click", () => {
+        myAppContainer.style.display = "flex";
+        buttonContainer.style.display = "flex";
+        showAppBtn.style.display = "none"; // Nascondi il bottone di avvio
+    });
 
-    updateCounterDisplay();
-    updateButtonState();
-});
+    // Implementazione della logica dell'Event Delegation grazie a cui intercetto l'elemento che ha scatenato l'evento
+    buttonContainer.addEventListener("click", (event) => {
+        const targetId = event.target.id;
 
+        switch (targetId) {
+            case "button1": // Decrementa
+                if (counterValue > 0) {
+                    counterValue--;
+                    updateCounterDisplay();
+                    updateButtonState();
+                }
+                break;
 
-startCountInput.addEventListener("change", (e) => {
-    const startValue = parseInt(e.target.value);
+            case "button2": // Incrementa
+                if (maxValue === null || counterValue < maxValue) {
+                    counterValue++;
+                    updateCounterDisplay();
+                    updateButtonState();
+                }
+                break;
 
-    if (isNaN(startValue)) {
-        // Mostra un alert se il valore non è un numero
-        window.alert("Attenzione: sono accettati solo valori numerici!");
-    } else {
-        let adjustedValue = startValue; // Imposta il valore massimo consentito
+            case "button3": // Azzera
+                counterValue = 0;
+                maxValue = null;
+                startCountInput.value = 0;
+                maxCountInput.value = 0;
+                updateCounterDisplay();
+                updateButtonState();
+                break;
+        }
+    });
 
-        // Se il valore massimo è definito, il contatore non deve superarlo
-        if (maxValue !== null) {
-            if (startValue > maxValue) {
-                adjustedValue = maxValue;
+    startCountInput.addEventListener("change", (e) => {
+        const startValue = parseInt(e.target.value);
+        handleInputChange(startValue);
+    });
+
+    maxCountInput.addEventListener("change", (e) => {
+        const newMaxValue = parseInt(e.target.value);
+        handleInputChange(newMaxValue, true);
+    });
+
+    // Implementazione della logica di gestione dell'input sulla base dei valori forniti con le impostazioni
+    function handleInputChange(value, isMaxValue = false) {
+        if (isNaN(value)) {
+            window.alert("Attenzione: sono accettati solo valori numerici!");
+        } else {
+            if (isMaxValue) {
+                maxValue = value;
+            } else {
+                let adjustedValue = value;
+                if (maxValue !== null && value > maxValue) {
+                    adjustedValue = maxValue;
+                }
+                counterValue = adjustedValue;
             }
+
+            updateCounterDisplay();
+            updateButtonState();
+        }
+    }
+
+    function updateCounterDisplay() {
+        sectionContainer.textContent = counterValue;
+    }
+
+    // Per garantire robustezza all'app, si impedisce con disabilitazione pulsanti, valori negativi o maggiori del massimo indicato in impostazioni
+    function updateButtonState() {
+        const incrementBtn = document.getElementById("button2");
+        const decrementBtn = document.getElementById("button1");
+
+        if (maxValue !== null && counterValue >= maxValue) {
+            incrementBtn.disabled = true;
+        } else {
+            incrementBtn.disabled = false;
         }
 
-        // Imposta il contatore al nuovo valore (eventualmente regolato)
-        counterValue = adjustedValue;
-
-        updateCounterDisplay();
-        updateButtonState();
+        if (counterValue <= 0) {
+            decrementBtn.disabled = true;
+        } else {
+            decrementBtn.disabled = false;
+        }
     }
 });
-
-maxCountInput.addEventListener("change", (e) => {
-    const newMaxValue = parseInt(e.target.value);
-
-    if (isNaN(newMaxValue)) {
-        window.alert("Attenzione: sono accettati solo valori numerici!");
-    } else {
-        maxValue = newMaxValue;
-
-        updateCounterDisplay();
-        updateButtonState();
-    }
-});
-
-
-function updateCounterDisplay() {
-    counterDiv.textContent = counterValue;
-}
-
-function updateButtonState() {
-
-    if (maxValue !== null && counterValue >= maxValue) {
-        incrementBtn.disabled = true;
-    } else {
-        incrementBtn.disabled = false;
-    }
-    // Se maxValue è definito e il valore del contatore (counterValue) raggiunge o supera 
-    // maxValue, disabilitiamo il pulsante di incremento. Questo evita che 
-    // l'utente superi il valore massimo consentito.
-
-    if (counterValue <= 0) {
-        decrementBtn.disabled = true;
-    } else {
-        decrementBtn.disabled = false;
-    }
-    // Se il valore del contatore è già zero o meno, disabilitiamo il pulsante di decremento.
-    // Questo previene che il contatore diventi negativo.
-}
