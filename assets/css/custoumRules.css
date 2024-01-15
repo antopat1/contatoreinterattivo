@@ -1,9 +1,9 @@
-/* import di "Nabla" tra i font maggiormente in trend */
+/* Import di "Nabla" tra i font maggiormente in trend */
 @import url('https://fonts.googleapis.com/css2?family=Nabla&family=Pixelify+Sans&family=Poppins:wght@100&family=Roboto&family=Rubik+Doodle+Shadow&display=swap');
 
 /* Reset del margin e padding di default e utilizzo del font "Nabla" come predefinito per l'intero documento */
 * {
-    font-family: "Nabla", sans-serif;
+    font-family: "Nabla", "sans-serif";
     padding: 0;
     margin: 0;
 }
@@ -13,8 +13,12 @@ body {
     color: #ccf986;
     background: #3634149b;
     background: linear-gradient(to bottom, #14361b78, #2b1e21);
-    background-attachment: fixed; /* Sfondo fisso durante lo scrolling */
-    height: 100vh; /* Occupa l'intera altezza della viewport */
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+h2 {
+    font-family: 'Courier New';
 }
 
 button {
@@ -22,19 +26,19 @@ button {
     background: #1f5700;
     color: #ffffff;
     border: none;
-    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25); /* Ombra leggera */
+    cursor: pointer;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
     height: 50px;
-    border-radius: 50px; /* Bordo arrotondato */
+    border-radius: 50px;
 }
 
 button:hover {
-    filter: hue-rotate(25deg); /* Cambia il colore al passaggio del mouse */
+    filter: hue-rotate(25deg);
 }
 
 button:disabled {
-    pointer-events: none; /* Impedisce l'interazione con i pulsanti disabilitati */
-    filter: saturate(10%); /* Riduce la saturazione del colore */
+    pointer-events: none;
+    filter: saturate(10%);
 }
 
 input {
@@ -45,8 +49,9 @@ input {
     height: 28px;
     border-radius: 14px;
     font-weight: 500;
-    color: #0004ff;
+    color: #db0505;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    font-family: "Arial, Helvetica, sans-serif";
 }
 
 input::-webkit-outer-spin-button,
@@ -60,7 +65,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4rem; /* Spaziatura tra gli elementi figli */
+    gap: 4rem;
 }
 
 .myApp-counterSetting {
@@ -69,7 +74,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-/* Stili per il contatore numerico */   
+/* Stili per il contatore numerico */
 .counter {
     font-size: 10em;
     text-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
@@ -80,7 +85,7 @@ input::-webkit-inner-spin-button {
 /* Stili per il contenitore dei pulsanti */
 .buttons {
     display: flex;
-    flex-wrap: wrap; /* Rientra a capo se non c'è abbastanza spazio */
+    flex-wrap: wrap;
     gap: 10px;
     width: 80%;
     margin-right: 400px;
@@ -109,7 +114,7 @@ input::-webkit-inner-spin-button {
     margin-bottom: 1rem;
 }
 
-/*Regole per le dimensioni e il posizionamento in risposta a schermi più piccoli */
+/* Regole per le dimensioni e il posizionamento in risposta a schermi più piccoli */
 @media (max-width: 768px) {
     .myApp-counterSetting {
         flex-direction: column;
@@ -131,7 +136,7 @@ input::-webkit-inner-spin-button {
     }
 }
 
-/* Regole per le dimensioni e il posizionamento in schermi molto piccoli come IPhone 12*/
+/* Regole per le dimensioni e il posizionamento in schermi molto piccoli come iPhone 12 */
 @media (max-width: 430px) {
     .settings {
         margin-left: 180px;
@@ -159,4 +164,9 @@ input::-webkit-inner-spin-button {
     #showAppBtn {
         font-size: 3vw;
     }
+}
+
+/* regola per nascondere elementi */
+.hidden {
+    display: none;
 }
